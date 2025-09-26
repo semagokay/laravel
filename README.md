@@ -57,21 +57,14 @@ Bu repo, Nginx ve PostgreSQL kullanarak Laravel projeleri geliştirmek için haz
     docker-compose exec app php laravel/artisan key:generate
     ```
 
+6. **Veritabanını Hazırla**
+
+    ```bash
+    docker-compose exec app php laravel/artisan migrate:fresh
+    ```
+
 ### Erişim
 
 Kurulum tamamlandı. Artık projenize tarayıcınızdan erişebilirsiniz:
 
 **http://localhost:2020**
-
-Veritabanı hatası vermesi durumunda;
-
-```bash
-docker-compose exec app sh
-```
-
-ile terminale bağlanıp;
-
-```bash
-php artisan migrate:fresh
-```
-komutunu çalıştır.
