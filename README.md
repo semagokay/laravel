@@ -62,3 +62,16 @@ Bu repo, Nginx ve PostgreSQL kullanarak Laravel projeleri geliştirmek için haz
 Kurulum tamamlandı. Artık projenize tarayıcınızdan erişebilirsiniz:
 
 **http://localhost:2020**
+
+Veritabanı hatası vermesi durumunda;
+
+```bash
+docker-compose exec app sh
+```
+
+ile terminale bağlanıp;
+
+```bash
+php artisan migrate:fresh
+```
+komutunu çalıştır.
