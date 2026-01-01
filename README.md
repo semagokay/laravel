@@ -32,7 +32,13 @@ Bu repo, Nginx ve PostgreSQL kullanarak Laravel projeleri geliştirmek için haz
     ```
     > **Not:** Nginx konfigürasyonu, projenin `laravel` isimli bir alt klasörde olmasını bekleyecek şekilde ayarlanmıştır.
 
-4.  **`.env` Dosyasını Yapılandır**
+    Eğer wsl içinde çalışıyorsanız bir kullanıcı çakışması yaşanıyor. "Permission" hatası alırsanız aşmak için "-u " ile user eşleştirmesi yaparak ilerlemelisiniz:
+
+    ```bash
+    docker-compose exec -u "$(id -u):$(id -g)" app composer create-project laravel/laravel laravel
+    ```
+
+5.  **`.env` Dosyasını Yapılandır**
 
     Proje ana dizininde, oluşturulan `laravel` klasörünün içindeki `.env.example` dosyasını kopyalayarak `.env` dosyasını oluşturun.
 
@@ -51,13 +57,13 @@ Bu repo, Nginx ve PostgreSQL kullanarak Laravel projeleri geliştirmek için haz
     DB_PASSWORD=password
     ```
 
-5.  **Uygulama Anahtarını (APP_KEY) Oluştur**
+6.  **Uygulama Anahtarını (APP_KEY) Oluştur**
 
     ```bash
     docker-compose exec app php laravel/artisan key:generate
     ```
 
-6. **Veritabanını Hazırla**
+7. **Veritabanını Hazırla**
 
     ```bash
     docker-compose exec app php laravel/artisan migrate:fresh

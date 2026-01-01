@@ -7,9 +7,9 @@ use App\Models\Customer;
 
 class Meal extends Model
 {
-    public function customer () {
-        return $this->belongsTo(Customer::class)
+    protected $guarded = ['id'];
+    
+    public function customer() {
+        return $this->belongsTo(Customer::class);
     }
 }
-
-
