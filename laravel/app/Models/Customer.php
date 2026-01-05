@@ -13,6 +13,6 @@ class Customer extends Model
     protected $guarded = ['id'];
 
     public function meals() {
-        return $this->hasMany(Meal::class);
+        return $this->hasMany(Meal::class);   //Customerın 1 den fazla meal ı var
     }
 }

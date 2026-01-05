@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Exercise;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class ExerciseController extends Controller
+class CustomerApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        dd(Exercise::all());   //  dd ekrana bastırır
+        $customers = Customer::all();
+
+        return response()->json($customers);
     }
 
     /**
@@ -20,19 +22,7 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        Exercise::create([
-            'name' => 'Running',
-            'type' => 'Cardio',
-            'unit' => 'minute',
-            'calori' => 12
-        ]);
-        
-        Exercise::create([
-            'name' => 'Push-up',
-            'type' => 'Strength',
-            'unit' => 'count',
-            'calori' => 1
-        ]);
+        //
     }
 
     /**
@@ -40,13 +30,20 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer =Customer::create([
+            'name' => $request->post('name'),
+            'surname' => $request->post('surname'),
+            'gender' => $request->post('gender')
+            'birthYear' => $request->post('birthYear'),
+        ])
+
+        return response()->json($customer);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Exercise $exercise)
+    public function show(Customer $customer)
     {
         //
     }
@@ -54,7 +51,7 @@ class ExerciseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Exercise $exercise)
+    public function edit(Customer $customer)
     {
         //
     }
@@ -62,7 +59,7 @@ class ExerciseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Exercise $exercise)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
@@ -70,7 +67,7 @@ class ExerciseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Exercise $exercise)
+    public function destroy(Customer $customer)
     {
         //
     }
